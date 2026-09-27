@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>React Native &amp; AI App Development Company | Soni Consultancy</title>
+    <meta name="description" content="React Native, MERN &amp; AI app development for founders. Senior engineers, fixed-price proposals in 48 hours, apps live on both stores. Book a free scoping call." />
+    <link rel="canonical" href="https://soniconsultancyservices.com/" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="theme-color" content="#050303" />
+    <meta property="og:site_name" content="Soni Consultancy Services" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="React Native & AI App Development — Soni Consultancy Services" />
+    <meta property="og:description" content="Cross-platform mobile apps with AI built in. Live on the App Store & Play Store. Ship in weeks." />
+    <meta property="og:image" content="/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" href="/fonts/stack-sans-headline-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/stack-sans-text-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/ruthie-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <!-- GA4, same property as the live portfolio.soniconsultancyservices.com build.
+         Production host only, so local dev and previews never send hits. -->
+    <script>
+      if (/(^|\.)soniconsultancyservices\.com$/.test(location.hostname)) {
+        var ga = document.createElement('script');
+        ga.async = true;
+        ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-CL9VPKLE6S';
+        document.head.appendChild(ga);
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function(){dataLayer.push(arguments);};
+        gtag('js', new Date());
+        gtag('config', 'G-CL9VPKLE6S');
+      }
+    </script>
+    <script>
+      // Theme before first paint (no flash). Dark is the default.
+      ;(function () {
+        try {
+          var t = localStorage.getItem('scs3d-theme')
+          document.documentElement.setAttribute('data-theme', t === 'light' ? 'light' : 'dark')
+        } catch (e) {}
+      })()
+    </script>
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"Organization","name":"Soni Consultancy Services","url":"https://soniconsultancyservices.com","sameAs":["https://www.linkedin.com/in/hetsoni/","https://www.instagram.com/soni.consultancyservices/","https://www.facebook.com/soniconsultancyservices","https://medium.com/@hetsoni9398"],"description":"React Native & MERN-stack mobile app development studio with AI integration.","founder":{"@type":"Person","name":"Het Soni"}}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <p style="padding:24px;font-family:system-ui;color:#F3EEEE;background:#050303">
+        This site needs JavaScript for its interactive views. Everything it says is also on
+        <a style="color:#F0252B" href="https://soniconsultancyservices.com">soniconsultancyservices.com</a>.
+      </p>
+    </noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

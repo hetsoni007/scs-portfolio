@@ -1,0 +1,208 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--f-body);
+    font-weight: 330;
+    line-height: 1.64;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    background: var(--bg);
+    min-height: 100svh;
+    overflow-x: clip;
+  }
+  ::selection {
+    background: var(--signal);
+    color: var(--on-signal);
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  :focus-visible {
+    outline: 2px solid var(--signal);
+    outline-offset: 3px;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  h1, h2, h3, h4 {
+    font-weight: inherit;
+  }
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0);
+  white-space: nowrap; border: 0;
+}
+
+.skip {
+  position: fixed;
+  left: 12px; top: 12px;
+  z-index: 200;
+  padding: 10px 14px;
+  background: var(--signal);
+  color: var(--on-signal);
+  font: 500 0.8rem/1 var(--f-label);
+  transform: translateY(-160%);
+  transition: transform 0.2s var(--ease-out);
+}
+.skip:focus { transform: none; }
+
+/* ── Layout ─────────────────────────────────────────────── */
+.wrap {
+  width: 100%;
+  max-width: calc(var(--maxw) + var(--margin) * 2);
+  margin-inline: auto;
+  padding-inline: var(--margin);
+}
+.g12 {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+}
+.sec {
+  position: relative;
+  padding-block: var(--sec-y);
+}
+.sec--tight { padding-block: calc(var(--sec-y) * 0.55); }
+/* Opaque sections hide the 3D stage behind them (and let it pause). */
+.sec[data-cover] { background: var(--bg); }
+.sec[data-cover='sunk'] { background: var(--bg-sunk); }
+.sec[data-cover='raise'] { background: var(--bg-raise); }
+.hairline-t { border-top: 1px solid var(--line); }
+.hairline-b { border-bottom: 1px solid var(--line); }
+
+/* Drafting grid: faint column rules on desktop, per section. */
+@media (min-width: 900px) {
+  [data-grid] > .wrap { position: relative; }
+  [data-grid] > .wrap::before {
+    content: '';
+    position: absolute;
+    inset: calc(var(--sec-y) * -1) var(--margin);
+    pointer-events: none;
+    background-image: linear-gradient(to right, var(--line) 1px, transparent 1px);
+    background-size: calc((100% + var(--gutter)) / 12) 100%;
+    mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+    opacity: 0.55;
+  }
+}
+
+/* ── Type ───────────────────────────────────────────────
+   Display: Stack Sans Headline, thin. Emphasis (<em>): Ruthie script in red —
+   the one warm, hand-made voice against the thin grotesk. */
+.t-xl,
+.t-d,
+.t-h2,
+.t-h3 {
+  font-family: var(--f-display);
+  color: var(--fg);
+}
+.t-xl {
+  font-size: var(--fs-display-xl);
+  line-height: 0.94;
+  letter-spacing: -0.035em;
+  font-weight: 200;
+}
+.t-d {
+  font-size: var(--fs-display);
+  line-height: 0.98;
+  letter-spacing: -0.032em;
+  font-weight: 220;
+}
+.t-h2 {
+  font-size: var(--fs-h2);
+  line-height: 1.04;
+  letter-spacing: -0.026em;
+  font-weight: 250;
+}
+.t-h3 {
+  font-size: var(--fs-h3);
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  font-weight: 380;
+}
+.t-xl em,
+.t-d em,
+.t-h2 em,
+.t-h3 em,
+.em,
+.script {
+  font-family: var(--f-script);
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--script);
+}
+.t-xl em,
+.t-d em,
+.t-h2 em,
+.em {
+  font-size: calc(1em * var(--script-scale));
+  line-height: 0.8;
+  padding-right: 0.08em;
+}
+.t-h3 em { font-size: 1.25em; line-height: 0.9; }
+.t-lead {
+  font-size: var(--fs-lead);
+  line-height: 1.52;
+  color: var(--fg-2);
+  max-width: 58ch;
+}
+.t-body {
+  color: var(--fg-2);
+  max-width: 68ch;
+}
+.t-body strong,
+.t-lead strong { color: var(--fg); font-weight: 520; }
+.t-label {
+  font-family: var(--f-label);
+  font-size: var(--fs-label);
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  line-height: 1.3;
+  color: var(--fg-3);
+}
+.t-mono { font-family: var(--f-label); letter-spacing: 0.04em; }
+.t-shout { font-family: var(--f-shout); font-weight: 400; letter-spacing: 0.02em; text-transform: uppercase; line-height: 0.86; }
+.t-sig { color: var(--signal); }
+.t-bone { color: var(--bone); }
+.t-2 { color: var(--fg-2); }
+.t-3 { color: var(--fg-3); }
+
+.ink-link {
+  color: var(--fg);
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 100% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.4s var(--ease-out), color 0.2s;
+}
+.ink-link:hover { color: var(--signal); background-size: 0 1px; background-position: 100% 100%; }
+
+/* Split-line reveal masks. Script swashes overshoot the line box, so a line that
+   holds an <em> gets extra room inside the clip (and gives it back with margins). */
+.line-mask { display: block; overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.line-mask:has(em) { padding: 0.18em 0.3em 0.32em; margin: -0.18em -0.3em -0.32em; }
+.line-mask > .line-in { display: block; will-change: transform; }
